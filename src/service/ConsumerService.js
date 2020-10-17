@@ -1,7 +1,7 @@
 const kafka = require("kafka-node");
 const bp = require("body-parser");
-const config = require("./kafka/kafka-config");
-const watchService = require("./service/WatchService");
+const config = require("../kafka/kafka-config");
+const watchService = require("./WatchService");
 
 try {
     const Consumer = kafka.Consumer;
