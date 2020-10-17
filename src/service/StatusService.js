@@ -9,8 +9,8 @@ const { QueryTypes } = require('sequelize');
 const uuid = require('uuid');
 const config = require("../kafka/kafka-config");
 
-exports.updateAlertStatus = (watchId, watchJson) => {
-    watchService.getWatch(watchId)
+exports.updateAlertStatus = (watchJson) => {
+    watchService.getWatch(watchJson.watchId)
         .then(watchData => {
             console.log("watchData: " + watchData);
             const watch = watchData.toJSON();

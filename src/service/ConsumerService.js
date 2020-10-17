@@ -49,7 +49,7 @@ try {
                                     console.log("watch and alert saved successfully");
 
                                     //update the the alert status
-                                    statusService.updateAlertStatus(watchJson.watchId, watchJson);
+                                    statusService.updateAlertStatus(watchJson);
                                 }).catch(e => console.log("error", e));
                         }).catch(e => console.log("error", e));
                 } else {
