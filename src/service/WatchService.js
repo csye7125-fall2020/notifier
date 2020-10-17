@@ -6,15 +6,23 @@ const Status = db.status;
 const uuid = require('uuid');
 
 exports.isWatchExist = function (watchId) {
-    return Watch.count({ where: { watchId: watchId } })
-        .then(count => {
-            return count !== 0;
-        });
+    return Watch.count({
+        where: { watchId: watchId }
+    });
+
+    // Watch.count({ where: { watchId: watchId } })
+    //     .then(count => {
+    //         console.log("watch count: " + count);
+    //         if (count != 0) {
+    //             return true;
+    //         }
+    //         return false;
+    //     });
 }
 
 exports.addWatch = (watch) => {
     return Watch.create({
-        watchId: uuid.v4(),
+        watchId: watch.watchId,
         userId: watch.userId,
         zipcode: watch.zipcode
     });
