@@ -1,0 +1,22 @@
+{
+  "name": "notifier",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "kafka-node": "^5.0.0"
+  },
+  "devDependencies": {
+    "bcrypt": "^5.0.0",
+    "log4js": "^6.3.0",
+    "sequelize": "^6.3.5"
+  },
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "run": "node consumer.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rajashree & Kinner",
+  "license": "ISC"
+}
