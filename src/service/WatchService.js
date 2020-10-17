@@ -2,18 +2,27 @@
 const db = require("../db/db-config");
 const Watch = db.watch;
 const Alert = db.alert;
+const Status = db.status;
 const uuid = require('uuid');
 
 exports.isWatchExist = function (watchId) {
-    return Watch.count({ where: { watchId: watchId } })
-        .then(count => {
-            return count !== 0;
-        });
+    return Watch.count({
+        where: { watchId: watchId }
+    });
+
+    // Watch.count({ where: { watchId: watchId } })
+    //     .then(count => {
+    //         console.log("watch count: " + count);
+    //         if (count != 0) {
+    //             return true;
+    //         }
+    //         return false;
+    //     });
 }
 
 exports.addWatch = (watch) => {
     return Watch.create({
-        watchId: uuid.v4(),
+        watchId: watch.watchId,
         userId: watch.userId,
         zipcode: watch.zipcode
     });
@@ -24,6 +33,18 @@ exports.addAlert = (alerts, watchId) => {
         alerts[i]["watchId"] = watchId;
     }
     return Alert.bulkCreate(alerts);
+}
+
+exports.addSingleAlert = (alert) => {
+    return Alert.create( alert );
+}
+
+exports.deleteSingleAlert = (alert) => {
+    return Alert.destroy({
+        where: {
+            alertId: alert.alertId
+        }
+    });
 }
 
 exports.updateWatch = (oldWatch, newWatch) => {
@@ -74,3 +95,4 @@ exports.getAlert = (alertId) => {
         }
     })
 }
+
