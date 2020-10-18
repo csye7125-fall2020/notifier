@@ -34,7 +34,7 @@ try {
         //                console.log("error while deleting watch " + e.messages);
         //        });
         //    }
-        const watchJson = JSON.parse(message.value);
+        var watchJson = JSON.parse(message.value);
         console.log("watch json id: " + watchJson.watchId)
         console.log("isWatchExist: " + watchService.isWatchExist(watchJson.watchId));
 
@@ -94,7 +94,7 @@ try {
                             }
 
                             //update the the alert status
-                            statusService.updateAlertStatus(watchJson.watchId, watchJson);
+                            statusService.updateAlertStatus(watchJson);
                         });
 
 
