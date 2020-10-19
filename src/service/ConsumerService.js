@@ -94,7 +94,7 @@ try {
                             }
 
                             //update the the alert status
-                            statusService.updateAlertStatus(watchJson.watchId, watchJson);
+                            statusService.updateAlertStatus(watchJson);
                         });
 
 
