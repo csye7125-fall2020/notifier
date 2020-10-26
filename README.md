@@ -103,5 +103,3 @@ Download Kafka binary from above URL and setup services with following commands.
     ```
     sudo docker run -e DBUser='<db username>' -e DBPassword='<db password>' -e DBName='csye7125_notifier' -e DBHost='localhost' -e alertThreshold=60 -it --name notifier --network="host" <your docker username>/notifier:latest
     ```
-
-Demo
