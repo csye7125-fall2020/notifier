@@ -138,5 +138,5 @@ Example `my-values.yaml` will look like:
     rdsdata:
       db_host: notifier-rds-instance.abcd0123456.us-east-1.rds.amazonaws.com
       db_name: csye7125_notifier
-      db_user: csye7125_user
-      db_password: Asdf#12345$
+      db_user: <my_db_username>
+      db_password: <my_db_password>
