@@ -90,12 +90,12 @@ pipeline {
      }
     stage('Write file my-values.yaml') {
       steps{
-        writeFile file: 'helm/my-values.yaml', text: "${env.my_values_yaml}"
+        writeFile file: 'helm/my-values.yaml', text: "${env.my_values_yaml.replace(dockerRegistry + ':latest', dockerRegistry + ':' + git_hash)}"
       }
     }
     stage('Helm upgrade') {
       steps{
-        sh "./linux-amd64/helm upgrade notifier ./helm/notifier-helm/ -f helm/my-values.yaml --set spec.imageName=$dockerRegistry:${git_hash}"
+        sh "./linux-amd64/helm upgrade notifier ./helm/notifier-helm/ -f helm/my-values.yaml"
       }
     }
   }
