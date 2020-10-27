@@ -11,7 +11,7 @@ db.sequelize.sync({ force: false }).then(() => {
 
 try {
     const Consumer = kafka.Consumer;
-    const client = new kafka.KafkaClient();
+    const client = new kafka.KafkaClient({ kafkaHost: config.kafka_host });
     let consumer = new Consumer(
         client,
         [{ topic: config.kafka_topic, partition: 0 }],

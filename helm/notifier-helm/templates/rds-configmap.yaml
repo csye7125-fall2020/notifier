@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rds-config
+data:
+  db_host: {{ .Values.rdsdata.db_host }}
+  db_name: {{ .Values.rdsdata.db_name }}
+  server_port: {{ .Values.server_port | quote}}

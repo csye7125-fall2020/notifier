@@ -1,0 +1,13 @@
+apiVersion: v2
+name: notifier-helm
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: 1.16.0
+sources:
+  - https://github.com/csye7125-fall2020/notifier
+maintainers:
+  - name: Rajashree Joshi
+    email: joshi.raj@northeastern.edu
+  - name: Kinnar Kansara
+    email: kansara.k@northeastern.edu

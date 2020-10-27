@@ -1,7 +1,7 @@
 module.exports={
     HOST: process.env.DBHost || "localhost",
-    USER: process.env.DBUser || "root",
-    PASSWORD: process.env.DBPassword || "root",
+    USER: process.env.DBUser || "csye7125_user",
+    PASSWORD: process.env.DBPassword || "Asdf#12345$",
     DB: process.env.DBName || "csye7125_notifier",
     DIALECT:"mysql",
     POOL: {
