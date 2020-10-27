@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifier-deployment
+  labels:
+    app: {{ .Values.spec.appName }}
+spec:
+  replicas: {{ .Values.spec.replicaCount }}
+  progressDeadlineSeconds: {{ .Values.spec.progressDeadlineSeconds }}
+  minReadySeconds: {{ .Values.spec.minReadySeconds }}
+  strategy:
+    rollingUpdate:
+      maxSurge: {{ .Values.spec.strategy.maxSurge }}
+      maxUnavailable: {{ .Values.spec.strategy.maxUnavailable }}
+    type: {{ .Values.spec.strategy.type }}
+  selector:
+    matchLabels:
+      app: {{ .Values.spec.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.spec.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.spec.appName }}
+          image: {{ .Values.spec.imageName }}
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: server_port
+                  name: rds-config
+            - name: DBHost
+              valueFrom:
+                configMapKeyRef:
+                  name: rds-config
+                  key: db_host
+            - name: DBName
+              valueFrom:
+                configMapKeyRef:
+                  name: rds-config
+                  key: db_name
+            - name: DBUser
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret
+                  key: db_user
+            - name: DBPassword
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret
+                  key: db_password
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+      imagePullSecrets:
+        - name: dockerregistrykey
+
+
