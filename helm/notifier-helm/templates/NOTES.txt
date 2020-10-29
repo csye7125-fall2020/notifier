@@ -1,0 +1,13 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+Install helm chart:
+1. Navigate to the helm directory
+2. Run helm install command
+    helm install <name_of_the_release> ./notifier-helm/ -f ./helm/my-values.yaml
+
+Uninstall helm chart:
+1. Navigate to the helm directory
+2. Run helm uninstall command
+    helm uninstall <name_of_the_release>
