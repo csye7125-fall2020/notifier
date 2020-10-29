@@ -10,21 +10,38 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 try {
-    const Consumer = kafka.Consumer;
-    const client = new kafka.KafkaClient();
-    let consumer = new Consumer(
-        client,
-        [{ topic: config.kafka_topic, partition: 0 }],
-        {
-            autoCommit: true,
-            fetchMaxWaitMs: 1000,
-            fetchMaxBytes: 1024 * 1024,
-            encoding: "utf8",
-            fromOffset: false,
-        }
-    );
-    consumer.on("message", function (message) {
+    // const Consumer = kafka.Consumer;
+    // const client = new kafka.KafkaClient({ kafkaHost: config.kafka_host });
+    // let consumer = new Consumer(
+    //     client,
+    //     [{ topic: config.kafka_topic, partition: 0 }],
+    //     {
+    //         autoCommit: true,
+    //         fetchMaxWaitMs: 1000,
+    //         fetchMaxBytes: 1024 * 1024,
+    //         encoding: "utf8",
+    //         fromOffset: false,
+    //     }
+    // );
+
+    var options = {
+        kafkaHost: config.kafka_host,
+        groupId: 'WeatherGroup',
+        sessionTimeout: 15000,
+        protocol: ['roundrobin'],
+        fromOffset: 'earliest' // equivalent of auto.offset.reset valid values are 'none', 'latest', 'earliest'
+    };
+    var consumerGroup = new kafka.ConsumerGroup(options, config.kafka_topic);
+
+    consumerGroup.on("message", function (message) {
         console.log("kafka-> ", message.value);
+        console.log(
+            '%s read msg Topic="%s" Partition=%s Offset=%d',
+            this.client.clientId,
+            message.topic,
+            message.partition,
+            message.offset
+        );
         //    if(message.value.includes("deleted")){
         //        const watchId = message.value.slice(0, message.value.indexOf(" "));
         //        return watchService.deleteWatch(watchId)
@@ -34,7 +51,7 @@ try {
         //                console.log("error while deleting watch " + e.messages);
         //        });
         //    }
-        const watchJson = JSON.parse(message.value);
+        var watchJson = JSON.parse(message.value);
         console.log("watch json id: " + watchJson.watchId)
         console.log("isWatchExist: " + watchService.isWatchExist(watchJson.watchId));
 

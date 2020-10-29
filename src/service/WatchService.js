@@ -48,6 +48,9 @@ exports.deleteSingleAlert = (alert) => {
 }
 
 exports.updateWatch = (newWatch) => {
+    // const updatedWatch = {
+    //     zipcode: newWatch.zipcode ? newWatch.zipcode : oldWatch.zipcode
+    // }
     return Watch.update(newWatch, {
         where: {
             watchId: newWatch.watchId
