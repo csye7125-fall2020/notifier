@@ -56,12 +56,12 @@ spec:
               protocol: TCP
           livenessProbe:
             tcpSocket:
-              port: 2181
+              port: 9092
             initialDelaySeconds: 20
             periodSeconds: 20
           readinessProbe:
             tcpSocket:
-              port: 2181
+              port: 9092
             initialDelaySeconds: 20
             periodSeconds: 20
       imagePullSecrets:
