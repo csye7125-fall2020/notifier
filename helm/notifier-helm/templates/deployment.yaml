@@ -29,26 +29,26 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: server_port
-                  name: rds-config
+                  name: rds-config-notifier
             - name: DBHost
               valueFrom:
                 configMapKeyRef:
-                  name: rds-config
+                  name: rds-config-notifier
                   key: db_host
             - name: DBName
               valueFrom:
                 configMapKeyRef:
-                  name: rds-config
+                  name: rds-config-notifier
                   key: db_name
             - name: DBUser
               valueFrom:
                 secretKeyRef:
-                  name: rds-secret
+                  name: rds-secret-notifier
                   key: db_user
             - name: DBPassword
               valueFrom:
                 secretKeyRef:
-                  name: rds-secret
+                  name: rds-secret-notifier
                   key: db_password
           imagePullPolicy: Always
           ports:
@@ -65,4 +65,4 @@ spec:
             initialDelaySeconds: 20
             periodSeconds: 20
       imagePullSecrets:
-        - name: dockerregistrykey
+        - name: dockerregistrykeynotifier
