@@ -14,10 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 50000 }))
 
-// const port = process.env.PORT || 3001;
-//
-// const server = http.createServer(app);
-//
-// server.listen(port, ()=>{
-//     console.log(`Server started on port ${port}`);
-// });
+const routes = require("./route/app-route");
+routes(app);
+
+const port = process.env.PORT || 3000;
+
+const server = http.createServer(app);
+
+server.listen(port, ()=>{
+    console.log(`Server started on port ${port}`);
+});

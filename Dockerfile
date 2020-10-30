@@ -12,4 +12,6 @@ RUN npm install
 
 COPY src /app/src
 
-CMD [ "node", "src/service/ConsumerService.js" ]
+CMD ./src/wrapper.sh
+
+EXPOSE 3000

@@ -55,13 +55,17 @@ spec:
             - containerPort: 3000
               protocol: TCP
           livenessProbe:
-            tcpSocket:
-              port: 9092
+            httpGet:
+              port: 3000
+              path: /health
+              scheme: HTTP
             initialDelaySeconds: 20
             periodSeconds: 20
           readinessProbe:
-            tcpSocket:
-              port: 9092
+            httpGet:
+              port: 3000
+              path: /health
+              scheme: HTTP
             initialDelaySeconds: 20
             periodSeconds: 20
       imagePullSecrets:
