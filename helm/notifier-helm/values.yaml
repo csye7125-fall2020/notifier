@@ -24,6 +24,9 @@ rdsdata:
   db_user: <rds_user>
   db_password: <rds_password>
 
+initialDelaySeconds: 15
+periodSeconds: 30
+
 nodeSelector: {}
 
 tolerations: []
