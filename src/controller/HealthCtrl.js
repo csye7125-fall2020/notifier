@@ -1,6 +1,6 @@
 const {QueryTypes} = require('sequelize');
 const kafka = require('kafka-node');
-const config = require("../kafka/kafka-config");
+const config = require("../kafka/kafkaConfig");
 const db = require("../db/db-config");
 
 exports.health = (req, res) => {

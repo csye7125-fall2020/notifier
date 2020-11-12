@@ -27,6 +27,18 @@ rdsdata:
 initialDelaySeconds: 15
 periodSeconds: 30
 
+serviceAccount:
+  name: notifier-sa
+
+rbac:
+  create: true
+
+role:
+  name: notifier-role
+
+roleBinding:
+  name: notifier-rb
+
 nodeSelector: {}
 
 tolerations: []

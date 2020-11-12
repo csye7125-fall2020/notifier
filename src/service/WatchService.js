@@ -2,22 +2,11 @@
 const db = require("../db/db-config");
 const Watch = db.watch;
 const Alert = db.alert;
-const Status = db.status;
-const uuid = require('uuid');
 
 exports.isWatchExist = function (watchId) {
     return Watch.count({
         where: { watchId: watchId }
     });
-
-    // Watch.count({ where: { watchId: watchId } })
-    //     .then(count => {
-    //         console.log("watch count: " + count);
-    //         if (count != 0) {
-    //             return true;
-    //         }
-    //         return false;
-    //     });
 }
 
 exports.addWatch = (watch) => {
@@ -48,9 +37,6 @@ exports.deleteSingleAlert = (alert) => {
 }
 
 exports.updateWatch = (newWatch) => {
-    // const updatedWatch = {
-    //     zipcode: newWatch.zipcode ? newWatch.zipcode : oldWatch.zipcode
-    // }
     return Watch.update(newWatch, {
         where: {
             watchId: newWatch.watchId
