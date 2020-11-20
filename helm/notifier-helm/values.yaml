@@ -39,6 +39,11 @@ role:
 roleBinding:
   name: notifier-rb
 
+hpa:
+  minReplicas: 1
+  maxReplicas: 2
+  averageUtilization: 5
+
 nodeSelector: {}
 
 tolerations: []

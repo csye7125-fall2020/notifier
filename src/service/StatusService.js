@@ -88,6 +88,4 @@ exports.updateAlertStatus = (watchJson) => {
                     });
             }
         });
-
-
 }

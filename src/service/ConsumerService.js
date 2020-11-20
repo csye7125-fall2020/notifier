@@ -10,12 +10,7 @@ const consumedCounter = new client.Counter({
     help: 'The total number of messages consumed'
 });
 
-const histogram = require("../server");
-
-// const db = require("../db/db-config");
-// db.sequelize.sync({force: false}).then(() => {
-//     console.log("Synchronizing Database...");
-// });
+const histogram = require("../server").histogram;
 
 try {
     const end = histogram.startTimer();

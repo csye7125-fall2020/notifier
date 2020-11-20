@@ -13,8 +13,6 @@ rules:
       - get
       - watch
       - list
-      - create
-      - update
     resources:
       - secrets
       - configmaps
