@@ -13,9 +13,3 @@ const logger = log4js.getLogger("notifier");
 module.exports = {
     logger: logger
 }
-
-// exports.bcryptCompare = function (text, hash) {
-//     return bcrypt.compareSync(text, hash);
-// }
-// var bcryptUtil = require('../lib/utils');
-// bcryptUtil.bcryptCompare(plainText, otherHashedPassword)
