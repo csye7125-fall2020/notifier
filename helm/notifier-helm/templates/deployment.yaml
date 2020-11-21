@@ -20,6 +20,9 @@ spec:
     metadata:
       labels:
         app: {{ .Values.spec.appName }}
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3000'
     spec:
       containers:
         - name: {{ .Values.spec.appName }}
