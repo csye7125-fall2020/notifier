@@ -10,7 +10,7 @@ register.setDefaultLabels({
 
 module.exports = {
     histogram: new client.Histogram({
-        name: 'timed_kafka_calls',
+        name: 'notifier_timed_kafka_calls',
         help: 'The time taken to process database queries'
     })
 }

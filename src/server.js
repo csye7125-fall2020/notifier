@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const http = require("http");
 const app = express();
+const client = require("prom-client");
 
 const db = require("./db/db-config");
 
@@ -15,6 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 50000 }))
 
 const routes = require("./route/app-route");
 routes(app);
+
+app.get('/metrics', (req, res) => {
+    res.set('Content-Type', client.register.contentType);
+    res.end(client.register.metrics())
+});
 
 const port = process.env.PORT || 3000;
 
