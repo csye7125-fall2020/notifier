@@ -6,7 +6,7 @@ const statusService = require("./StatusService");
 const client = require('prom-client');
 
 const consumedCounter = new client.Counter({
-    name: 'count_message_consumed',
+    name: 'notifier_count_message_consumed',
     help: 'The total number of messages consumed'
 });
 
