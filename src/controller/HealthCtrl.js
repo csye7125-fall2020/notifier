@@ -2,7 +2,8 @@ const {QueryTypes} = require('sequelize');
 const kafka = require('kafka-node');
 const config = require("../kafka/kafkaConfig");
 const db = require("../db/db-config");
-const logger = require("../server").logger;
+const logger_util = require("../util/logger_util");
+const logger = logger_util.logger;
 
 exports.health = (req, res) => {
     try {
