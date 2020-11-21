@@ -10,7 +10,8 @@ const consumedCounter = new client.Counter({
     help: 'The total number of messages consumed'
 });
 
-const histogram = require("../server").histogram;
+const metrics_util = require("../util/metrics_util");
+const histogram = metrics_util.histogram;
 
 try {
     const end = histogram.startTimer();
