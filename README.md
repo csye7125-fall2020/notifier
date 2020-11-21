@@ -1,5 +1,5 @@
 # Notifier
-Demo Kinnar 1
+
 Notifier microservice implementation using Node.js and Kafka for consuming watch/alert information with weather information for users from `poller` microservice and update notification status.
 
 ## Team Members:
