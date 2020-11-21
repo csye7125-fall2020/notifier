@@ -71,5 +71,12 @@ spec:
               scheme: HTTP
             initialDelaySeconds: {{ .Values.initialDelaySeconds }}
             periodSeconds: {{ .Values.periodSeconds }}
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128M"
+            limits:
+              cpu: "1000m"
+              memory: "512M"
       imagePullSecrets:
         - name: dockerregistrykeynotifier
